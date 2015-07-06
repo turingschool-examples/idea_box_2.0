@@ -4,6 +4,8 @@ class IdeaController < ApplicationController
     @ideas = Idea.all
   end
 
-  
+  def create
+    binding.pry
+  end
 
 end

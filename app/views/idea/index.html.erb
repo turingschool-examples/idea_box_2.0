@@ -1,0 +1,22 @@
+<div class="col s6">
+  <h2>New Idea</h2>
+  <%= form_tag( ideas_path, {remote: true} ) %>
+  <%= label_tag "Title" %>
+  <%= text_field_tag :title %>
+  <%= label_tag :body, "Body" %>
+  <%= text_area_tag :body %>
+  <%= submit_tag "Submit" %>
+</div>
+
+<div class="col s6 offset-s6">
+  <h2>Idea-Dash</h2>
+</div>
+
+<div class="col s8 offset-s2">
+  <h3>Idea List</h3>
+  <ul>
+    <% @ideas.each do |idea| %>
+      <li><%= idea.title %>: <%= idea.body %></li>
+    <% end %>
+  </ul>
+</div>
