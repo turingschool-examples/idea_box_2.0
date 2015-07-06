@@ -31,4 +31,6 @@ group :development, :test do
   gem 'spring'
   gem 'database_cleaner'
   gem 'better_errors'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
 end
