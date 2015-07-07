@@ -1,6 +1,6 @@
 require "json"
 
-class API::V1::IdeaController < ApplicationController
+class Api::V1::IdeaController < ApplicationController
 
   respond_to :json
 
@@ -13,7 +13,7 @@ class API::V1::IdeaController < ApplicationController
   end
 
   def create
-
+    respond_with :api, :v1, Idea.create(idea_params)
   end
 
   def destroy
@@ -28,10 +28,9 @@ class API::V1::IdeaController < ApplicationController
 
   end
 
-  protected
+  private
 
   def idea_params
-    binding.pry
-    params.require(:idea)
+    params.require(:idea).permit(:title, :body)
   end
 end
