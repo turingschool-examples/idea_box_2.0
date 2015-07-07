@@ -17,7 +17,7 @@ class Api::V1::IdeaController < ApplicationController
   end
 
   def destroy
-
+    respond_with Idea.destroy(params[:id])
   end
 
   def edit
