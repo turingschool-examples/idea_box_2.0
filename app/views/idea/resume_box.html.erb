@@ -1,0 +1,37 @@
+<div class="row top">
+  <div class="col s5 left-align">
+    <h2>New</h2>
+    <%= form_tag( "#", {remote: true} ) %>
+    <%= label_tag "Title" %>
+    <%= text_field_tag :title %>
+    <%= label_tag :body, "Body" %>
+    <%= text_area_tag :body  %>
+    <%= submit_tag "Save", class: "job-save btn btn-large green darken-3", disable_with: "submit" %>
+  </div>
+
+  <div class="col s6 offset-s1 right-align">
+    <h2>Dash</h2>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="row">
+  <div class="col s12">
+    <h3 class= "center-align">The List</h3>
+
+    <div class="col s6 offset-s1 list-items">
+      <% @ideas.each_with_index do |idea, index| %>
+        <div class="idea-container">
+          <h6><%= idea.quality.option %></h6>
+          <h5><%= idea.title %>: </h5><h6><%= idea.body %></h6>
+            <button class= "btn btn-small green darken-3 upvote-idea" data-idea-id="<%= idea.id %>" data-quality-id="<%= idea.quality_id %>">^</button>
+            <button class= "btn btn-small yellow darken-3 downvote-idea" data-idea-id="<%= idea.id %>" data-quality-id="<%= idea.quality_id %>">v</button>
+            <button class= "btn btn-small red darken-3 delete-idea" data-idea-id="<%= idea.id %>">X</button>
+            <a href="/idea/<%= idea.id%>/edit" class= "btn btn-small grey lighten-1 edit-idea" data-idea-id="<%= idea.id %>">edit</a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
