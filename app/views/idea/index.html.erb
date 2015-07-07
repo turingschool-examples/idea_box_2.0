@@ -1,22 +1,30 @@
-<div class="col s6">
-  <h2>New Idea</h2>
-  <%= form_tag( ideas_path, {remote: true} ) %>
-  <%= label_tag "Title" %>
-  <%= text_field_tag :title %>
-  <%= label_tag :body, "Body" %>
-  <%= text_area_tag :body %>
-  <%= submit_tag "Submit" %>
+<div class="row top">
+  <div class="col s5 left-align">
+    <h2>New</h2>
+    <%= form_tag( ideas_path, {remote: true} ) %>
+    <%= label_tag "Title" %>
+    <%= text_field_tag :title %>
+    <%= label_tag :body, "Body" %>
+    <%= text_area_tag :body %>
+    <%= submit_tag "Submit", class: "idea-submit btn btn-large green darken-3", disable_with: "submit" %>
+  </div>
+
+  <div class="col s6 offset-s1 right-align">
+    <h2>Dash</h2>
+
+  </div>
 </div>
 
-<div class="col s6 offset-s6">
-  <h2>Idea-Dash</h2>
-</div>
+<div class="divider"></div>
 
-<div class="col s8 offset-s2">
-  <h3>Idea List</h3>
-  <ul>
-    <% @ideas.each do |idea| %>
-      <li><%= idea.title %>: <%= idea.body %></li>
-    <% end %>
-  </ul>
+<div class="row">
+  <div class="col s12">
+    <h3 class= "center-align">The List</h3>
+
+    <div class="col s6 offset-s3">
+      <% @ideas.each_with_index do |idea, index| %>
+        <h6><%= index + 1%>. <%= idea.title %>: <%= idea.body %></h6>
+      <% end %>
+    </div>
+  </div>
 </div>
