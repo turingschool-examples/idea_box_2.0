@@ -17,9 +17,11 @@ ActiveRecord::Schema.define(version: 20150706165928) do
   enable_extension "plpgsql"
 
   create_table "ideas", force: :cascade do |t|
-    t.string  "title"
-    t.string  "body"
-    t.integer "quality_id"
+    t.string   "title"
+    t.string   "body"
+    t.integer  "quality_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "ideas", ["quality_id"], name: "index_ideas_on_quality_id", using: :btree

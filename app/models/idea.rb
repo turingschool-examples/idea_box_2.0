@@ -3,4 +3,6 @@ class Idea < ActiveRecord::Base
   validates :body, presence: true, uniqueness: true
 
   has_one :quality
+
+  default_scope { order(created_at: "desc") }
 end

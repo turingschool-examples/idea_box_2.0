@@ -4,6 +4,7 @@ class CreateIdea < ActiveRecord::Migration
       t.string :title
       t.string :body
       t.references :quality, index: true, foreign_key: true
+      t.timestamps null: false
     end
   end
 end
