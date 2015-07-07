@@ -2,6 +2,7 @@ $(function(){
 newIdea();
 deleteIdea();
 qualityChange();
+filterIdeas();
 });
 
 var newIdea = function() {
@@ -25,18 +26,37 @@ $(".job-save").on("click", function() {
       $("#title").val("");
       $("#body").val("");
       $(".list-items").prepend("<div class='idea-container'>"
-        +"<h5>"
+        + "<h6 class='quality'>swill</h6>"
+        + "<h5>"
         + data.title
         + ": "
         + "</h5><h6>"
         + data.body
-        + "</h6><button class= 'btn btn-small red darken-3 delete-idea'"
-        + " data-idea-id='"
+        + "</h6>"
+        + "<button class= 'btn btn-small green darken-3 upvote-idea' data-idea-id='"
         + data.id
-        + "'>X</button></div>")
+        + "' data-quality-id='"
+        + data.quality_id
+        + "'>^</button>"
+        + "<button class= 'btn btn-small yellow darken-3 downvote-idea' data-idea-id='"
+        + data.id
+        + "' data-quality-id='"
+        + data.quality_id
+        + "'>v</button>"
+        + "<button class= 'btn btn-small red darken-3 delete-idea'"
+        + "data-idea-id='"
+        + data.id
+        + "'>X</button>"
+        + "<button class= 'btn btn-small grey lighten-1 edit-idea'"
+        + "data-idea-id='"
+        + data.id
+        + "'>edit</button>"
+        + "</div>")
     })
     .done( function(){
       deleteIdea();
+      qualityChange();
+      editIdea();
     })
   })
 };
@@ -63,6 +83,7 @@ var deleteIdea = function() {
 var qualityChange = function(){
   $(".upvote-idea").on("click", function(){
     var ideaId = {idea: {id: $(this).data("idea-id"), vote: "upvote"} }
+    var ideaQuality = $(this).siblings().first()
 
     $.ajax({
       type: "PATCH",
@@ -73,12 +94,20 @@ var qualityChange = function(){
         console.log("win")
         },
       error: function(failure) {
+        }
+      })
+      .done(function(){
+        if (ideaQuality.text() === "swill") {
+          $(ideaQuality).html("plausible")
+        } else {
+          $(ideaQuality).html("genius")
         }
       })
   });
 
   $(".downvote-idea").on("click", function(){
     var ideaId = {idea: {id: $(this).data("idea-id"), vote: "downvote"} }
+    var ideaQuality = $(this).siblings().first()
 
     $.ajax({
       type: "PATCH",
@@ -91,5 +120,19 @@ var qualityChange = function(){
       error: function(failure) {
         }
       })
+      .done(function(){
+        if (ideaQuality.text() === "genius") {
+          $(ideaQuality).html("plausible")
+        } else {
+          $(ideaQuality).html("swill")
+        }
+      })
+  })
+}
+
+var editIdea = function(){
+  $.ajax({
+    type: "PATCH"
+
   })
 }

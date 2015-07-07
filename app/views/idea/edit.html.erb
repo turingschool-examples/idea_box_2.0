@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="edit-form">
+    <h1>Edit</h1>
+    <%= form_for @idea do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: @idea.title %>
+    <%= f.label :body %>
+    <%= f.text_area :body, placeholder: @idea.body %>
+    <%= f.submit "Save", class: "btn btn-large grey" %>
+    <% end %>
+  </div>
+</div>
