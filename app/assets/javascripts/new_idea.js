@@ -1,15 +1,25 @@
 $(function(){
-
+newIdea();
 });
 
+var newIdea = function() {
+$(".job-save").on("click", function() {
+  var jobTitle = $(".title").val();
+  var jobBody = $(".body").val();
 
-$(".idea-submit").bind("click", function() {
   $.ajax({
-    url: "/ideas/new",
-    method: "post",
+    method: "POST",
+    url: "/api/v1/idea",
     dataType: "json",
-    success: function(){
+    data: { title: jobTitle,  body: jobBody },
+    success: function() {
       console.log("win")
     },
+    error: function() {
+      console.log("losing");
+    }
+
   })
-})
+
+});
+};

@@ -1,11 +1,5 @@
 class IdeaController < ApplicationController
-
-  def index
+  def resume_box
     @ideas = Idea.all
   end
-
-  def create
-    binding.pry
-  end
-
 end

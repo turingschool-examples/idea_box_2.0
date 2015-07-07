@@ -1,12 +1,12 @@
 <div class="row top">
   <div class="col s5 left-align">
     <h2>New</h2>
-    <%= form_tag( ideas_path, {remote: true} ) %>
+    <%= form_tag( "#", {remote: true} ) %>
     <%= label_tag "Title" %>
     <%= text_field_tag :title %>
     <%= label_tag :body, "Body" %>
-    <%= text_area_tag :body %>
-    <%= submit_tag "Submit", class: "idea-submit btn btn-large green darken-3", disable_with: "submit" %>
+    <%= text_area_tag :body  %>
+    <%= submit_tag "Save", class: "job-save btn btn-large green darken-3", disable_with: "submit" %>
   </div>
 
   <div class="col s6 offset-s1 right-align">
