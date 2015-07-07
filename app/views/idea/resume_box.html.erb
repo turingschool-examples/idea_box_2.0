@@ -24,7 +24,9 @@
     <div class="col s6 offset-s1 list-items">
       <% @ideas.each_with_index do |idea, index| %>
         <div class="idea-container">
-          <h5><%= idea.title %>: </h5><h6><%= idea.body %></h6>
+          <h5><%= idea.title %>: </h5><h6><%= idea.body %><%= idea.quality_id %></h6>
+            <button class= "btn btn-small green darken-3 upvote-idea" data-idea-id="<%= idea.id %>">^</button>
+            <button class= "btn btn-small yellow darken-3 downvote-idea" data-idea-id="<%= idea.id %>">v</button>
             <button class= "btn btn-small red darken-3 delete-idea" data-idea-id="<%= idea.id %>">X</button>
         </div>
       <% end %>
