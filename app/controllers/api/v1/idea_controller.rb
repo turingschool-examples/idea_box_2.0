@@ -9,7 +9,7 @@ class Api::V1::IdeaController < ApplicationController
   end
 
   def show
-
+    respond_with Idea.find_by!(id: params[:id])
   end
 
   def create
@@ -21,7 +21,7 @@ class Api::V1::IdeaController < ApplicationController
   end
 
   def edit
-
+    respond_with Idea.find_by!(id: params[:id])
   end
 
   def update
@@ -37,6 +37,6 @@ class Api::V1::IdeaController < ApplicationController
   private
 
   def idea_params
-    params.require(:idea).permit(:id, :title, :body, :quality)
+    params.require(:idea).permit(:id, :title, :body, :quality_id)
   end
 end

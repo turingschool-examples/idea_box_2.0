@@ -2,8 +2,28 @@
   margin-left: 19%;
 }
 
+.dashboard {
+  min-height: 350px;
+  border: 2px solid black;
+}
+
+.idea-container {
+  border: 2px solid black;
+}
+
+.buttons {
+  padding-bottom: 15px !important;
+}
+
+
 #search-label {
   margin-left: 16%;
+  font-size: 20px;
+}
+
+
+.input-field {
+  opacity: .6;
 }
 
 .top {
