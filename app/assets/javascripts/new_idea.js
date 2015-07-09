@@ -10,7 +10,7 @@ $(".job-save").on("click", function() {
     data: ideaParams,
     success: function(data) {
       printIdea(data);
-      }
+    },
     error: function() {
       alert("Invalid Idea");
     }

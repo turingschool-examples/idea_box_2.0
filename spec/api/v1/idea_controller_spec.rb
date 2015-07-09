@@ -35,8 +35,21 @@ RSpec.describe Api::V1::IdeaController, type: :controller do
     end
   end
 
+  describe "POST #update" do
+    it "returns updated json" do
+    id = Idea.last.id
+    idea_data = {title: "Updated Title", body: "Updated Body"}
+
+    post :update, format: :json, id: id, idea: idea_data
+
+    data = JSON.parse(response.body, symbolize_names: true)
+    expect(data[:title]).to eq("Updated Title")
+    expect(data[:body]).to eq("Updated Body")
+    end
+  end
+
   describe "POST #create" do
-    it "creates new idea via json" do
+    it "creates new idea via ajax" do
       quality = Quality.create(option: "Swill")
       original_count = Idea.count
       idea_data = { title: "New Title", body: "New Body", quality_id: quality.id }
@@ -44,9 +57,20 @@ RSpec.describe Api::V1::IdeaController, type: :controller do
       post :create, format: :json, idea: idea_data
 
       data = Idea.first
-      
+
+      expect(Idea.count).to eq(original_count + 1)
       expect(data[:title]).to eq("New Title")
       expect(data[:body]).to eq("New Body")
+    end
+  end
+
+  describe "DELETE #destroy" do
+    it "deletes an idea with json" do
+      original_count = Idea.count
+      id = Idea.last.id
+
+      delete :destroy, format: :json, id: id
+      expect(Idea.count).to eq(original_count - 1)
     end
   end
 end

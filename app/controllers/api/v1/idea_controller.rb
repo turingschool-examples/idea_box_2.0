@@ -25,12 +25,12 @@ class Api::V1::IdeaController < ApplicationController
   end
 
   def update
-    idea = Idea.find_by!(id: params[:idea][:id].to_i)
+    idea = Idea.find_by!(id: params[:id])
     if params[:idea][:vote] != nil
       idea.update_quality(params[:idea][:vote])
       respond_with idea.update(idea_params)
     else
-      respond_with idea.update(idea_params)
+      respond_with Idea.update(params[:id], idea_params)
     end
   end
 
