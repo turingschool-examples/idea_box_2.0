@@ -9,11 +9,10 @@ var qualityChange = function(){
       dataType: "json",
       data: ideaId,
       success: function() {
-        console.log("win")
         },
       error: function(failure) {
         }
-      })
+      });
       .done(function(){
         if (ideaQuality.text() === "swill") {
           $(ideaQuality).html("plausible")
@@ -33,7 +32,6 @@ var qualityChange = function(){
       dataType: "json",
       data: ideaId,
       success: function() {
-        console.log("win")
         },
       error: function(failure) {
         }

@@ -36,7 +36,7 @@ RSpec.describe Api::V1::IdeaController, type: :controller do
   end
 
   describe "POST #update" do
-    it "returns updated json" do
+    it "returns update without vote json" do
     id = Idea.last.id
     idea_data = {title: "Updated Title", body: "Updated Body"}
 
@@ -50,7 +50,7 @@ RSpec.describe Api::V1::IdeaController, type: :controller do
 
   describe "POST #create" do
     it "creates new idea via ajax" do
-      quality = Quality.create(option: "Swill")
+      quality = Quality.create(option: "swill")
       original_count = Idea.count
       idea_data = { title: "New Title", body: "New Body", quality_id: quality.id }
 

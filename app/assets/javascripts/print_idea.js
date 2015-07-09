@@ -22,9 +22,11 @@ var printIdea = function(data) {
     + "data-idea-id='"
     + data.id
     + "'>delete</button>"
-    + "<button class= 'btn btn-small grey lighten-1 edit-idea'"
-    + "data-idea-id='"
+    + "<a href='/idea/"
     + data.id
-    + "'>edit</button>"
+    + "/edit' class= 'btn btn-small grey lighten-1 edit-idea'"
+    + "data-idea-id="
+    + data.id
+    + "'>edit</a>"
     + "</div>")
 }

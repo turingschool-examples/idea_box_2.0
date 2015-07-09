@@ -7,7 +7,7 @@ RSpec.describe "ActiveModel validations" do
   end
 
   let(:quality) { build(:quality) }
-  let(:idea) { create(:idea, quality_id: quality.id) }
+  let(:idea) { build(:idea, quality_id: quality.id) }
 
   it { expect(idea).to validate_uniqueness_of(:title) }
   it { expect(idea).to validate_uniqueness_of(:body) }

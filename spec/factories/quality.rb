@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :quality do
-    option "genius"
+    option "plausible"
   end
 end
