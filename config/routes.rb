@@ -8,4 +8,6 @@ Rails.application.routes.draw do
       resources :idea
     end
   end
+  
+  mount MagicLamp::Genie, at: "/magic_lamp/" if defined?(MagicLamp)
 end
