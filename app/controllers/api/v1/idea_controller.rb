@@ -1,7 +1,4 @@
-require "json"
-
 class Api::V1::IdeaController < ApplicationController
-
   respond_to :json
 
   def index
@@ -9,7 +6,7 @@ class Api::V1::IdeaController < ApplicationController
   end
 
   def show
-    respond_with Idea.find_by!(id: params[:id])
+    respond_with Idea.find(params[:id])
   end
 
   def create
@@ -25,7 +22,7 @@ class Api::V1::IdeaController < ApplicationController
   end
 
   def update
-    idea = Idea.find_by!(id: params[:id])
+    idea = Idea.find(params[:id])
     if params[:idea][:vote] != nil
       idea.update_quality(params[:idea][:vote])
       respond_with idea.update(idea_params)
