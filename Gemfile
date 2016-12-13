@@ -13,7 +13,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails_12factor'
 gem 'responders'
 gem 'awesome_print'
-gem 'materialize-sass'
 # gem 'bcrypt', '~> 3.1.7'
 
 # gem 'unicorn'
@@ -24,9 +23,6 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'web-console', '~> 2.0'
-  gem 'teaspoon'
-  gem 'teaspoon-mocha'
-  gem 'magic_lamp'
   gem 'capybara'
   gem 'launchy'
   gem 'pry'
@@ -34,6 +30,4 @@ group :development, :test do
   gem 'spring'
   gem 'database_cleaner'
   gem 'better_errors'
-  gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
 end
