@@ -3,7 +3,7 @@ class CreateIdea < ActiveRecord::Migration
     create_table :ideas do |t|
       t.string :title
       t.string :body
-      t.references :quality, index: true, foreign_key: true, default: 1
+      t.string :quality, default: "swill"
       t.timestamps null: false
     end
   end
