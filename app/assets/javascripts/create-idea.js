@@ -8,6 +8,14 @@ $(document).ready(function(){
   $("#create-idea-button").on('click', createIdea);
 })
 
+function clearIdea() {
+  newIdeaTitle.val("");
+  newIdeaBody.val("");
+}
+
+function displayFailure(failureData){
+  console.log(failureData);
+}
 
 function createIdea (event){
   event.preventDefault();
@@ -18,11 +26,8 @@ function createIdea (event){
     }
   }
 
-
   $.post("/api/v1/ideas", idea)
-   .then( function(ideaData){
-     //render the idea
-     $("#ideas-list").html("<div class='idea'>" + ideaData.title + " "
-                            + ideaData.body + "</div>" )
-   })
+   .then( renderIdea )
+   .then( clearIdea )
+   .fail( displayFailure )
  }
