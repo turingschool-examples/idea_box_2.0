@@ -16,9 +16,11 @@ function renderIdea(idea){
   $("#ideas-list").append(`<div class='idea'>
                             <p>${ idea.title.toUpperCase() }</p>
                             <p>${ idea.body }</p>
-                            <p>${ idea.quality }
+
+                            <p data-id='${idea.id}' >${ idea.quality }
                               <button class='delete-idea'>Delete</button>
                             </p>
+
                           </div>` )
 
 }
